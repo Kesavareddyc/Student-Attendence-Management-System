@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a624516214.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: radial-gradient(rgb(235, 234, 223), rgb(222, 229, 121));
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            /* Ensure full viewport height */
+            margin: 0;
+            /* Remove default margin */
+            padding: 0;
+            /* Remove default padding */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>   
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <div class="buttons m-3">
+            <a href="{{ url_for('upload_file') }}" class="button mr-3">Upload File</a>
+            <a href="{{ url_for('view_attendance') }}" class="button ml-3">View Attendance</a>
+        </div>
+    </div>
+</body>
+</html>
