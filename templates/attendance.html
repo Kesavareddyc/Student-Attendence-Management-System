@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#" onclick="document.getElementById('overallForm').submit()">Overall List</a>
+        <a href="#" onclick="document.getElementById('condonationForm').submit()">Condonation List</a>
+        <a href="#" onclick="document.getElementById('detainedForm').submit()">Detained List</a>
+        <a href="#" onclick="document.getElementById('generateForm').submit()">Generate Reports</a>
+    </div>
+    <div class="content">
+        <h1>Attendance for {{ year_sem }} - {{ section }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Student Name</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student['ROLL_NUMBER'] }}</td>
+                    <td>{{ student['STUDENT_NAME'] }}</td>
+                    <td>{{"%.2f" % student['ATTENDANCE'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <form id="overallForm" method="POST" action="{{ url_for('overall_reports') }}">
+        <input type="hidden" name="year_sem" value="{{ year_sem }}">
+        <input type="hidden" name="section" value="{{ section }}">
+    </form>
+    <form id="condonationForm" method="POST" action="{{ url_for('condonation_list') }}">
+        <input type="hidden" name="year_sem" value="{{ year_sem }}">
+        <input type="hidden" name="section" value="{{ section }}">
+    </form>
+    <form id="detainedForm" method="POST" action="{{ url_for('detained_list') }}">
+        <input type="hidden" name="year_sem" value="{{ year_sem }}">
+        <input type="hidden" name="section" value="{{ section }}">
+    </form>
+    <form id="generateForm" method="POST" action="{{ url_for('generate_reports') }}">
+        <input type="hidden" name="year_sem" value="{{ year_sem }}">
+        <input type="hidden" name="section" value="{{ section }}">
+    </form>
+</body>
+</html>
